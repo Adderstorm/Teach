@@ -1,0 +1,104 @@
+﻿<Page x:Class="Tours.AddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Tours"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="203*"/>
+            <RowDefinition Height="22*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="DGGroup" Visibility="Hidden" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="61*"/>
+                <ColumnDefinition Width="19*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0">
+
+            </DataGrid>
+            <Label Content="Группа" Foreground="Red" FontSize="20" Grid.Column="1" Margin="58,9,58,359"/>
+            <TextBox x:Name="tbFaculty" Grid.Column="1" Margin="8,128,8,248"/>
+            <Label Content="ID Факультета" Foreground="Red" FontSize="20" Grid.Column="1" Margin="25,93,25,278"/>
+            <TextBox x:Name="tbGroup" Grid.Column="1" Margin="8,52,8,328"/>
+        </Grid>
+
+        <Grid x:Name="DGStudent" Visibility="Hidden" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="537*"/>
+                <ColumnDefinition Width="263*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0">
+
+            </DataGrid>
+            <Label Content="Имя студента" Foreground="Red" FontSize="20" Grid.Column="1" Margin="63,-5,63,373"/>
+            <TextBox x:Name="tbGroupID" Grid.Column="1" Margin="8,86,8,290"/>
+
+            <Label Content="ID Группы" Foreground="Red" FontSize="20" Grid.Column="1" Margin="79,51,80,320"/>
+            <TextBox x:Name="tbLastName" Grid.Column="1" Margin="8,30,8,350"/>
+            <Label Content="Адрес Email" Foreground="Red" FontSize="20" Grid.Column="1" Margin="68,110,68,258"/>
+            <TextBox x:Name="tbPhoneNum" Grid.Column="1" Margin="6,202,10,174"/>
+            <Label Content="Номер телефона" Foreground="Red" FontSize="20" Grid.Column="1" Margin="44,167,44,204"/>
+            <TextBox x:Name="tbEamil" Grid.Column="1" Margin="6,146,10,234"/>
+            <TextBox x:Name="tbBirthday" Grid.Column="1" Margin="6,261,10,115"/>
+            <Label Content="День рождения" Foreground="Red" FontSize="20" Grid.Column="1" Margin="51,226,52,145"/>
+        </Grid>
+
+        <Grid x:Name="DGRup" Visibility="Hidden" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="201*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="537*"/>
+                <ColumnDefinition Width="263*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0" Grid.RowSpan="2"/>
+            <Label Content="Название дисциплины" Foreground="Red" FontSize="20" Grid.Column="1" Margin="15,-8,16,372"/>
+            <TextBox x:Name="tbFacultyHour" Grid.Column="1" Margin="8,86,8,286"/>
+
+            <Label Content="Кол-во Часов" Foreground="Red" FontSize="20" Grid.Column="1" Margin="61,51,62,316"/>
+            <TextBox x:Name="tbRupName" Grid.Column="1" Margin="8,30,8,346"/>
+            <Label Content="Вид Аттестации" Foreground="Red" FontSize="20" Grid.Column="1" Margin="55,108,56,256"/>
+            <TextBox x:Name="tbTrainerID" Grid.Column="1" Margin="6,202,10,170"/>
+            <Label Content="ID Преподавателя" Foreground="Red" FontSize="20" Grid.Column="1" Margin="44,167,44,200"/>
+            <TextBox x:Name="tbAttestationView" Grid.Column="1" Margin="6,146,10,230"/>
+            <TextBox x:Name="tbTerm" Grid.Column="1" Margin="6,261,10,111"/>
+            <Label Content="Семестр" Foreground="Red" FontSize="20" Grid.Column="1" Margin="85,226,85,141"/>
+            <TextBox x:Name="tbFacultyID" Grid.Column="1" Margin="6,317,10,55"/>
+            <Label Content="ID Специальности" Foreground="Red" FontSize="20" Grid.Column="1" Margin="44,282,44,85"/>
+            <TextBox x:Name="tbCourseID" Grid.Column="1" Margin="6,376,10,0" Grid.RowSpan="2"/>
+            <Label Content="ID Дисциплины" Foreground="Red" FontSize="20" Grid.Column="1" Margin="51,341,52,26"/>
+        </Grid>
+
+        <Grid x:Name="DG" Visibility="Hidden" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="537*"/>
+                <ColumnDefinition Width="263*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0">
+
+            </DataGrid>
+            <Label Content="Название дисциплины" Foreground="Red" FontSize="20" Grid.Column="1" Margin="21,10,21,354"/>
+            <TextBox x:Name="tbCourseTitle" Grid.Column="1" Margin="8,52,8,320"/>
+        </Grid>
+
+        <Grid x:Name="DGFaculty" Visibility="Hidden" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="537*"/>
+                <ColumnDefinition Width="263*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0">
+
+            </DataGrid>
+            <Label Content="Специальность" Foreground="Red" FontSize="20" Grid.Column="1" Margin="57,10,56,354"/>
+            <TextBox x:Name="tbFacultyTitle" Grid.Column="1" Margin="9,43,8,329"/>
+        </Grid>
+
+        <Button Name="SaveBtn" Content="Сохранить" Grid.Row="1"/>
+    </Grid>
+</Page>
