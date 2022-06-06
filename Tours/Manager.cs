@@ -10,5 +10,6 @@ namespace Tours
     class Manager
     {
         public static Frame MainFrame { get; set; }
+        public static TableView tableView { get; set; }
     }
 }

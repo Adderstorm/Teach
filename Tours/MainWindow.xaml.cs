@@ -20,10 +20,12 @@ namespace Tours
     /// </summary>
     public partial class MainWindow : Window
     {
+        public int k = 1;
         public MainWindow()
         {
             InitializeComponent();
             Manager.MainFrame = MainFrame;
+            Manager.MainFrame.Navigate(Manager.tableView);
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -115,18 +117,17 @@ namespace Tours
 
         private void Other_Click(object sender, RoutedEventArgs e)
         {
-            int k = 1;
             if(k % 2 == 0)
             {
                 SecondaryTables.Visibility = Visibility.Hidden;
                 Other.Margin = new Thickness(5, 180, 5, 0);
-                k++;
+                k+= 1;
             }
             else
             {
                 SecondaryTables.Visibility = Visibility.Visible;
                 Other.Margin = new Thickness(5, 495, 5, 0);
-                k++;
+                k+= 1;
             }
         }
     }

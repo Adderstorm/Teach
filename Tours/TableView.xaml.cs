@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Tours
 {
     /// <summary>
-    /// Логика взаимодействия для AddPage.xaml
+    /// Логика взаимодействия для TableView.xaml
     /// </summary>
-    public partial class AddPage : Page
+    public partial class TableView : Page
     {
-        public AddPage()
+        public TableView()
         {
             InitializeComponent();
         }
