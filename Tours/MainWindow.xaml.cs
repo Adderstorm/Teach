@@ -130,5 +130,10 @@ namespace Tours
                 k+= 1;
             }
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
