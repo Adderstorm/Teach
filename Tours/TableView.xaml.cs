@@ -20,7 +20,7 @@ namespace Tours
     /// </summary>
     public partial class TableView : Page
     {
-        public TableView()
+        public TableView(int choose)
         {
             InitializeComponent();
         }
