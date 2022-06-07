@@ -75,7 +75,7 @@
             <Label Content="ID Дисциплины" Foreground="Red" FontSize="20" Grid.Column="1" Margin="51,341,52,26"/>
         </Grid>
 
-        <Grid x:Name="DG" Visibility="Hidden" Grid.Row="0">
+        <Grid x:Name="DGCourse" Visibility="Hidden" Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="537*"/>
                 <ColumnDefinition Width="263*"/>

@@ -32,8 +32,10 @@ namespace Tours
                     DGGroup.Visibility= Visibility.Visible;
                     break;
                 case 3:
+                    DGFaculty.Visibility = Visibility.Visible;
                     break;
                 case 4:
+                    DGCourse.Visibility = Visibility.Visible;
                     break;
                 case 5:
                     DGRup.Visibility = Visibility.Visible;
