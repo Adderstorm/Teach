@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4021c4d76df6415e99dd8b72a46cdf96" Name="Diagram1">
+        <EntityTypeShape EntityType="CollegeNLModel.Course" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.ExpelledStudents" Width="1.5" PointX="4.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.Faculty" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.Grade" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.Group" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.RUP" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.Student" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.Trainer" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.AVGStudentGrade" Width="1.5" PointX="0.625" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.AcademicLoad" Width="1.5" PointX="6.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.AcademicLoad_SortByTerm_" Width="1.5" PointX="8.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.FStudents" Width="1.5" PointX="10.5" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.GroupAVGValue" Width="1.5" PointX="2.625" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.ListStudents" Width="1.5" PointX="4.625" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.ListStudentsGrade" Width="1.5" PointX="0.625" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CollegeNLModel.StudentRating" Width="1.5" PointX="2.625" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="CollegeNLModel.FK_RUP_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeNLModel.FK_Group_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeNLModel.FK_RUP_Faculty" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeNLModel.FK_Grade_RUP" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeNLModel.FK_Grade_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeNLModel.FK_Student_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="CollegeNLModel.FK_RUP_Trainer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

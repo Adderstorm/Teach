@@ -23,22 +23,29 @@ namespace Tours
         public TableView(int choose)
         {
             InitializeComponent();
-            switch(choose)
+
+            DGFaculty.ItemsSource = CollegeNLEntities.GetContext().Faculty.ToList();
+            DGStudent.ItemsSource = CollegeNLEntities.GetContext().Student.ToList();
+            DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
+            DGCourse.ItemsSource = CollegeNLEntities.GetContext().Course.ToList();
+            DGGroup.ItemsSource = CollegeNLEntities.GetContext().Group.ToList();
+
+            switch (choose)
             {
                 case 1:
-                    DGStudent.Visibility = Visibility.Visible;
+                    DGStudent1.Visibility = Visibility.Visible;
                     break;
                 case 2:
-                    DGGroup.Visibility= Visibility.Visible;
+                    DGGroup1.Visibility= Visibility.Visible;
                     break;
                 case 3:
-                    DGFaculty.Visibility = Visibility.Visible;
+                    DGFaculty1.Visibility = Visibility.Visible;
                     break;
                 case 4:
-                    DGCourse.Visibility = Visibility.Visible;
+                    DGCourse1.Visibility = Visibility.Visible;
                     break;
                 case 5:
-                    DGRup.Visibility = Visibility.Visible;
+                    DGRup1.Visibility = Visibility.Visible;
                     break;
                 case 6:
                     break;
@@ -61,7 +68,27 @@ namespace Tours
                 default:
                     MessageBox.Show("Кажется произошла непредвиденная ошибка!");
                     break;
-            } 
+            }
+            //DGFaculty.ItemsSource = CollegeNLEntities.GetContext().Faculty.ToList();
+            //DGStudent.ItemsSource = CollegeNLEntities.GetContext().Student.ToList();
+            //DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
+            //DGCourse.ItemsSource = CollegeNLEntities.GetContext().Course.ToList();
+            //DGGroup.ItemsSource = CollegeNLEntities.GetContext().Group.ToList();
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDel_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

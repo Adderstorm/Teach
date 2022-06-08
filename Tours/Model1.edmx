@@ -1,0 +1,1041 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище CollegeNLModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.AVGStudentGrade" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AVGStudentGrade">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" />
+          <Property Name="AVGStudGrade" Type="float" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseTitle" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ExpelledStudents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DeductionDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="FacultyID" />
+          </Key>
+          <Property Name="FacultyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FacultyTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="GradeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="GradeValue" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="RUPID" Type="int" />
+          <Property Name="Term" Type="int" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FacultyID" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "CollegeNL.dbo.Obsh" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Obsh">
+          <Property Name="ДисциплинаRUP" Type="varchar" MaxLength="50" />
+          <Property Name="СпециальностьИзRUP" Type="varchar" MaxLength="50" />
+          <Property Name="СеместрИзRUP" Type="varchar" MaxLength="50" />
+          <Property Name="ФИО_Студента" Type="varchar" MaxLength="50" />
+          <Property Name="Дата сдачи" Type="varchar" MaxLength="50" />
+          <Property Name="Оценка" Type="varchar" MaxLength="50" />
+          <Property Name="ФИОСтудента" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="НомерТелефона" Type="nvarchar" MaxLength="50" />
+          <Property Name="ДатаРождения" Type="varchar" MaxLength="50" />
+          <Property Name="Группа" Type="varchar" MaxLength="50" />
+          <Property Name="НаименованиеДисциплины" Type="varchar" MaxLength="50" />
+          <Property Name="СеместрИзGRADE" Type="varchar" MaxLength="50" />
+          <Property Name="ВидАттестации" Type="varchar" MaxLength="50" />
+          <Property Name="КоличествоЧасов" Type="varchar" MaxLength="50" />
+          <Property Name="специальностьИзGrade" Type="varchar" MaxLength="50" />
+          <Property Name="КатегорияДисциплины" Type="varchar" MaxLength="50" />
+          <Property Name="Преподаватель" Type="varchar" MaxLength="50" />
+          <Property Name="КатегорияПреподавателя" Type="varchar" MaxLength="50" />
+          <Property Name="Стаж" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <EntityType Name="RUP">
+          <Key>
+            <PropertyRef Name="RUPID" />
+          </Key>
+          <Property Name="RUPID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RUPName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FacultyHour" Type="int" Nullable="false" />
+          <Property Name="AttestationView" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TrainerID" Type="int" />
+          <Property Name="Term" Type="int" />
+          <Property Name="FacultyID" Type="int" />
+          <Property Name="CourseID" Type="int" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+          </Key>
+          <Property Name="TrainerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrainerExp" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttestationLvl" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.AcademicLoad" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AcademicLoad">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+            <PropertyRef Name="RUPName" />
+            <PropertyRef Name="FacultyHour" />
+          </Key>
+          <Property Name="TrainerId" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RUPName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FacultyHour" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.AcademicLoad(SortByTerm)" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="AcademicLoad(SortByTerm)">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+            <PropertyRef Name="RUPName" />
+            <PropertyRef Name="FacultyHour" />
+          </Key>
+          <Property Name="TrainerId" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RUPName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FacultyHour" Type="int" Nullable="false" />
+          <Property Name="Term" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.FStudents" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="FStudents">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="FacultyTitle" />
+          </Key>
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GradeValue" Type="int" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FacultyTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.GroupAVGValue" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="GroupAVGValue">
+          <Key>
+            <PropertyRef Name="GroupName" />
+          </Key>
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AVGGRADE" Type="int" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.ListStudents" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ListStudents">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="FacultyTitle" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FacultyTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.ListStudentsGrade" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="ListStudentsGrade">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="FacultyTitle" />
+          </Key>
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GradeValue" Type="int" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FacultyTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "CollegeNL.dbo.StudentRating" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="StudentRating">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GradeValue" Type="int" />
+          <Property Name="CourseID" Type="int" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Grade_RUP">
+          <End Role="RUP" Type="Self.RUP" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUP">
+              <PropertyRef Name="RUPID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="RUPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Faculty">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="FacultyID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="FacultyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUP_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="RUP" Type="Self.RUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="RUP">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUP_Faculty">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+          <End Role="RUP" Type="Self.RUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="FacultyID" />
+            </Principal>
+            <Dependent Role="RUP">
+              <PropertyRef Name="FacultyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUP_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="RUP" Type="Self.RUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="TrainerId" />
+            </Principal>
+            <Dependent Role="RUP">
+              <PropertyRef Name="TrainerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="DelCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DelFac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DelGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DelRUP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RupID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DelStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsFac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacultyTitle" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacultyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsRup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RupName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacultyHour" Type="int" Mode="In" />
+          <Parameter Name="AttestatinView" Type="nvarchar" Mode="In" />
+          <Parameter Name="TrainerID" Type="int" Mode="In" />
+          <Parameter Name="Term" Type="int" Mode="In" />
+          <Parameter Name="CourseID" Type="int" Mode="In" />
+          <Parameter Name="FacultyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="PhoneNum" Type="nvarchar" Mode="In" />
+          <Parameter Name="Birthday" Type="date" Mode="In" />
+        </Function>
+        <Function Name="RatingStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdFac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacultyTitle" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GroupName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacultyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdRup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RupName" Type="nvarchar" Mode="In" />
+          <Parameter Name="FacultyHour" Type="int" Mode="In" />
+          <Parameter Name="AttestatinView" Type="nvarchar" Mode="In" />
+          <Parameter Name="TrainerID" Type="int" Mode="In" />
+          <Parameter Name="Term" Type="int" Mode="In" />
+          <Parameter Name="CourseID" Type="int" Mode="In" />
+          <Parameter Name="FacultyID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="LastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="GroupID" Type="int" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="PhoneNum" Type="nvarchar" Mode="In" />
+          <Parameter Name="Birthday" Type="date" Mode="In" />
+        </Function>
+        <EntityContainer Name="Хранилище CollegeNLModelContainer">
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpelledStudents" EntityType="Self.ExpelledStudents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RUP" EntityType="Self.RUP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AVGStudentGrade" EntityType="Self.AVGStudentGrade" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AVGStudentGrade].[ID] AS [ID], 
+    [AVGStudentGrade].[StudentID] AS [StudentID], 
+    [AVGStudentGrade].[AVGStudGrade] AS [AVGStudGrade]
+    FROM [dbo].[AVGStudentGrade] AS [AVGStudentGrade]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AcademicLoad" EntityType="Self.AcademicLoad" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AcademicLoad].[TrainerId] AS [TrainerId], 
+    [AcademicLoad].[LastName] AS [LastName], 
+    [AcademicLoad].[RUPName] AS [RUPName], 
+    [AcademicLoad].[FacultyHour] AS [FacultyHour]
+    FROM [dbo].[AcademicLoad] AS [AcademicLoad]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AcademicLoad(SortByTerm)" EntityType="Self.AcademicLoad(SortByTerm)" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AcademicLoad(SortByTerm)].[TrainerId] AS [TrainerId], 
+    [AcademicLoad(SortByTerm)].[LastName] AS [LastName], 
+    [AcademicLoad(SortByTerm)].[RUPName] AS [RUPName], 
+    [AcademicLoad(SortByTerm)].[FacultyHour] AS [FacultyHour], 
+    [AcademicLoad(SortByTerm)].[Term] AS [Term]
+    FROM [dbo].[AcademicLoad(SortByTerm)] AS [AcademicLoad(SortByTerm)]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FStudents" EntityType="Self.FStudents" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FStudents].[LastName] AS [LastName], 
+    [FStudents].[GradeValue] AS [GradeValue], 
+    [FStudents].[GroupName] AS [GroupName], 
+    [FStudents].[FacultyTitle] AS [FacultyTitle]
+    FROM [dbo].[FStudents] AS [FStudents]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="GroupAVGValue" EntityType="Self.GroupAVGValue" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [GroupAVGValue].[GroupName] AS [GroupName], 
+    [GroupAVGValue].[AVGGRADE] AS [AVGGRADE]
+    FROM [dbo].[GroupAVGValue] AS [GroupAVGValue]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ListStudents" EntityType="Self.ListStudents" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListStudents].[StudentID] AS [StudentID], 
+    [ListStudents].[LastName] AS [LastName], 
+    [ListStudents].[GroupName] AS [GroupName], 
+    [ListStudents].[FacultyTitle] AS [FacultyTitle]
+    FROM [dbo].[ListStudents] AS [ListStudents]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ListStudentsGrade" EntityType="Self.ListStudentsGrade" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ListStudentsGrade].[LastName] AS [LastName], 
+    [ListStudentsGrade].[GradeValue] AS [GradeValue], 
+    [ListStudentsGrade].[GroupName] AS [GroupName], 
+    [ListStudentsGrade].[FacultyTitle] AS [FacultyTitle]
+    FROM [dbo].[ListStudentsGrade] AS [ListStudentsGrade]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentRating" EntityType="Self.StudentRating" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentRating].[GradeValue] AS [GradeValue], 
+    [StudentRating].[CourseID] AS [CourseID], 
+    [StudentRating].[LastName] AS [LastName], 
+    [StudentRating].[GroupID] AS [GroupID]
+    FROM [dbo].[StudentRating] AS [StudentRating]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Grade_RUP" Association="Self.FK_Grade_RUP">
+            <End Role="RUP" EntitySet="RUP" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_Student" Association="Self.FK_Grade_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Faculty" Association="Self.FK_Group_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUP_Course" Association="Self.FK_RUP_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="RUP" EntitySet="RUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUP_Faculty" Association="Self.FK_RUP_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="RUP" EntitySet="RUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUP_Trainer" Association="Self.FK_RUP_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="RUP" EntitySet="RUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Group" Association="Self.FK_Student_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CollegeNLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RUP" Relationship="Self.FK_RUP_Course" FromRole="Course" ToRole="RUP" />
+        </EntityType>
+        <EntityType Name="ExpelledStudents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DeductionDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Faculty">
+          <Key>
+            <PropertyRef Name="FacultyID" />
+          </Key>
+          <Property Name="FacultyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FacultyTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Group_Faculty" FromRole="Faculty" ToRole="Group" />
+          <NavigationProperty Name="RUP" Relationship="Self.FK_RUP_Faculty" FromRole="Faculty" ToRole="RUP" />
+        </EntityType>
+        <EntityType Name="Grade">
+          <Key>
+            <PropertyRef Name="GradeId" />
+          </Key>
+          <Property Name="GradeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="GradeValue" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="RUPID" Type="Int32" />
+          <Property Name="Term" Type="Int32" />
+          <NavigationProperty Name="RUP" Relationship="Self.FK_Grade_RUP" FromRole="Grade" ToRole="RUP" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Grade_Student" FromRole="Grade" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyID" Type="Int32" />
+          <NavigationProperty Name="Faculty" Relationship="Self.FK_Group_Faculty" FromRole="Group" ToRole="Faculty" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Group" FromRole="Group" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="RUP">
+          <Key>
+            <PropertyRef Name="RUPID" />
+          </Key>
+          <Property Name="RUPID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RUPName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyHour" Type="Int32" Nullable="false" />
+          <Property Name="AttestationView" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TrainerID" Type="Int32" />
+          <Property Name="Term" Type="Int32" />
+          <Property Name="FacultyID" Type="Int32" />
+          <Property Name="CourseID" Type="Int32" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_RUP_Course" FromRole="RUP" ToRole="Course" />
+          <NavigationProperty Name="Faculty" Relationship="Self.FK_RUP_Faculty" FromRole="RUP" ToRole="Faculty" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_Grade_RUP" FromRole="RUP" ToRole="Grade" />
+          <NavigationProperty Name="Trainer" Relationship="Self.FK_RUP_Trainer" FromRole="RUP" ToRole="Trainer" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Grade" Relationship="Self.FK_Grade_Student" FromRole="Student" ToRole="Grade" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_Student_Group" FromRole="Student" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+          </Key>
+          <Property Name="TrainerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrainerExp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttestationLvl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RUP" Relationship="Self.FK_RUP_Trainer" FromRole="Trainer" ToRole="RUP" />
+        </EntityType>
+        <EntityType Name="AVGStudentGrade">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" />
+          <Property Name="AVGStudGrade" Type="Double" />
+        </EntityType>
+        <EntityType Name="AcademicLoad">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+            <PropertyRef Name="RUPName" />
+            <PropertyRef Name="FacultyHour" />
+          </Key>
+          <Property Name="TrainerId" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RUPName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyHour" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AcademicLoad_SortByTerm_">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+            <PropertyRef Name="RUPName" />
+            <PropertyRef Name="FacultyHour" />
+          </Key>
+          <Property Name="TrainerId" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RUPName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyHour" Type="Int32" Nullable="false" />
+          <Property Name="Term" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FStudents">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="FacultyTitle" />
+          </Key>
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GradeValue" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupAVGValue">
+          <Key>
+            <PropertyRef Name="GroupName" />
+          </Key>
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AVGGRADE" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ListStudents">
+          <Key>
+            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="FacultyTitle" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListStudentsGrade">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="FacultyTitle" />
+          </Key>
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GradeValue" Type="Int32" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentRating">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GradeValue" Type="Int32" />
+          <Property Name="CourseID" Type="Int32" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_RUP_Course">
+          <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+          <End Role="RUP" Type="Self.RUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseID" />
+            </Principal>
+            <Dependent Role="RUP">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Faculty">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="FacultyID" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="FacultyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUP_Faculty">
+          <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+          <End Role="RUP" Type="Self.RUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faculty">
+              <PropertyRef Name="FacultyID" />
+            </Principal>
+            <Dependent Role="RUP">
+              <PropertyRef Name="FacultyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_RUP">
+          <End Role="RUP" Type="Self.RUP" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RUP">
+              <PropertyRef Name="RUPID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="RUPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Grade" Type="Self.Grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Grade">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="GroupID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RUP_Trainer">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="RUP" Type="Self.RUP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="TrainerId" />
+            </Principal>
+            <Dependent Role="RUP">
+              <PropertyRef Name="TrainerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CollegeNLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Course" EntityType="Self.Course" />
+          <EntitySet Name="ExpelledStudents" EntityType="Self.ExpelledStudents" />
+          <EntitySet Name="Faculty" EntityType="Self.Faculty" />
+          <EntitySet Name="Grade" EntityType="Self.Grade" />
+          <EntitySet Name="Group" EntityType="Self.Group" />
+          <EntitySet Name="RUP" EntityType="Self.RUP" />
+          <EntitySet Name="Student" EntityType="Self.Student" />
+          <EntitySet Name="Trainer" EntityType="Self.Trainer" />
+          <EntitySet Name="AVGStudentGrade" EntityType="Self.AVGStudentGrade" />
+          <EntitySet Name="AcademicLoad" EntityType="Self.AcademicLoad" />
+          <EntitySet Name="AcademicLoad_SortByTerm_" EntityType="Self.AcademicLoad_SortByTerm_" />
+          <EntitySet Name="FStudents" EntityType="Self.FStudents" />
+          <EntitySet Name="GroupAVGValue" EntityType="Self.GroupAVGValue" />
+          <EntitySet Name="ListStudents" EntityType="Self.ListStudents" />
+          <EntitySet Name="ListStudentsGrade" EntityType="Self.ListStudentsGrade" />
+          <EntitySet Name="StudentRating" EntityType="Self.StudentRating" />
+          <AssociationSet Name="FK_RUP_Course" Association="Self.FK_RUP_Course">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="RUP" EntitySet="RUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Faculty" Association="Self.FK_Group_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUP_Faculty" Association="Self.FK_RUP_Faculty">
+            <End Role="Faculty" EntitySet="Faculty" />
+            <End Role="RUP" EntitySet="RUP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_RUP" Association="Self.FK_Grade_RUP">
+            <End Role="RUP" EntitySet="RUP" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_Student" Association="Self.FK_Grade_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Grade" EntitySet="Grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Group" Association="Self.FK_Student_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RUP_Trainer" Association="Self.FK_RUP_Trainer">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="RUP" EntitySet="RUP" />
+          </AssociationSet>
+          <FunctionImport Name="DelCourse">
+            <Parameter Name="CourseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DelFac">
+            <Parameter Name="FacId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DelGroup">
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DelRUP">
+            <Parameter Name="RupID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DelStud">
+            <Parameter Name="StudentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsFac">
+            <Parameter Name="FacultyTitle" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsGroup">
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="FacultyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsRup">
+            <Parameter Name="RupName" Mode="In" Type="String" />
+            <Parameter Name="FacultyHour" Mode="In" Type="Int32" />
+            <Parameter Name="AttestatinView" Mode="In" Type="String" />
+            <Parameter Name="TrainerID" Mode="In" Type="Int32" />
+            <Parameter Name="Term" Mode="In" Type="Int32" />
+            <Parameter Name="CourseID" Mode="In" Type="Int32" />
+            <Parameter Name="FacultyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsStud">
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="PhoneNum" Mode="In" Type="String" />
+            <Parameter Name="Birthday" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="RatingStud" ReturnType="Collection(CollegeNLModel.RatingStud_Result)" />
+          <FunctionImport Name="UpdFac">
+            <Parameter Name="FacultyTitle" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdGroup">
+            <Parameter Name="GroupName" Mode="In" Type="String" />
+            <Parameter Name="FacultyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdRup">
+            <Parameter Name="RupName" Mode="In" Type="String" />
+            <Parameter Name="FacultyHour" Mode="In" Type="Int32" />
+            <Parameter Name="AttestatinView" Mode="In" Type="String" />
+            <Parameter Name="TrainerID" Mode="In" Type="Int32" />
+            <Parameter Name="Term" Mode="In" Type="Int32" />
+            <Parameter Name="CourseID" Mode="In" Type="Int32" />
+            <Parameter Name="FacultyID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdStud">
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="GroupID" Mode="In" Type="Int32" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="PhoneNum" Mode="In" Type="String" />
+            <Parameter Name="Birthday" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="RatingStud_Result">
+          <Property Type="Int32" Name="GradeValue" Nullable="true" />
+          <Property Type="Int32" Name="CourseID" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CollegeNLModelContainer" CdmEntityContainer="CollegeNLEntities">
+          <EntitySetMapping Name="Course">
+            <EntityTypeMapping TypeName="CollegeNLModel.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="CourseTitle" ColumnName="CourseTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpelledStudents">
+            <EntityTypeMapping TypeName="CollegeNLModel.ExpelledStudents">
+              <MappingFragment StoreEntitySet="ExpelledStudents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="DeductionDate" ColumnName="DeductionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faculty">
+            <EntityTypeMapping TypeName="CollegeNLModel.Faculty">
+              <MappingFragment StoreEntitySet="Faculty">
+                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+                <ScalarProperty Name="FacultyTitle" ColumnName="FacultyTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grade">
+            <EntityTypeMapping TypeName="CollegeNLModel.Grade">
+              <MappingFragment StoreEntitySet="Grade">
+                <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="RUPID" ColumnName="RUPID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="CollegeNLModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RUP">
+            <EntityTypeMapping TypeName="CollegeNLModel.RUP">
+              <MappingFragment StoreEntitySet="RUP">
+                <ScalarProperty Name="RUPID" ColumnName="RUPID" />
+                <ScalarProperty Name="RUPName" ColumnName="RUPName" />
+                <ScalarProperty Name="FacultyHour" ColumnName="FacultyHour" />
+                <ScalarProperty Name="AttestationView" ColumnName="AttestationView" />
+                <ScalarProperty Name="TrainerID" ColumnName="TrainerID" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="FacultyID" ColumnName="FacultyID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student">
+            <EntityTypeMapping TypeName="CollegeNLModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainer">
+            <EntityTypeMapping TypeName="CollegeNLModel.Trainer">
+              <MappingFragment StoreEntitySet="Trainer">
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="TrainerExp" ColumnName="TrainerExp" />
+                <ScalarProperty Name="AttestationLvl" ColumnName="AttestationLvl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AVGStudentGrade">
+            <EntityTypeMapping TypeName="CollegeNLModel.AVGStudentGrade">
+              <MappingFragment StoreEntitySet="AVGStudentGrade">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="AVGStudGrade" ColumnName="AVGStudGrade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcademicLoad">
+            <EntityTypeMapping TypeName="CollegeNLModel.AcademicLoad">
+              <MappingFragment StoreEntitySet="AcademicLoad">
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="RUPName" ColumnName="RUPName" />
+                <ScalarProperty Name="FacultyHour" ColumnName="FacultyHour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AcademicLoad_SortByTerm_">
+            <EntityTypeMapping TypeName="CollegeNLModel.AcademicLoad_SortByTerm_">
+              <MappingFragment StoreEntitySet="AcademicLoad(SortByTerm)">
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="RUPName" ColumnName="RUPName" />
+                <ScalarProperty Name="FacultyHour" ColumnName="FacultyHour" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FStudents">
+            <EntityTypeMapping TypeName="CollegeNLModel.FStudents">
+              <MappingFragment StoreEntitySet="FStudents">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacultyTitle" ColumnName="FacultyTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupAVGValue">
+            <EntityTypeMapping TypeName="CollegeNLModel.GroupAVGValue">
+              <MappingFragment StoreEntitySet="GroupAVGValue">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="AVGGRADE" ColumnName="AVGGRADE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListStudents">
+            <EntityTypeMapping TypeName="CollegeNLModel.ListStudents">
+              <MappingFragment StoreEntitySet="ListStudents">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacultyTitle" ColumnName="FacultyTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListStudentsGrade">
+            <EntityTypeMapping TypeName="CollegeNLModel.ListStudentsGrade">
+              <MappingFragment StoreEntitySet="ListStudentsGrade">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="FacultyTitle" ColumnName="FacultyTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentRating">
+            <EntityTypeMapping TypeName="CollegeNLModel.StudentRating">
+              <MappingFragment StoreEntitySet="StudentRating">
+                <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DelCourse" FunctionName="Хранилище CollegeNLModel.DelCourse" />
+          <FunctionImportMapping FunctionImportName="DelFac" FunctionName="Хранилище CollegeNLModel.DelFac" />
+          <FunctionImportMapping FunctionImportName="DelGroup" FunctionName="Хранилище CollegeNLModel.DelGroup" />
+          <FunctionImportMapping FunctionImportName="DelRUP" FunctionName="Хранилище CollegeNLModel.DelRUP" />
+          <FunctionImportMapping FunctionImportName="DelStud" FunctionName="Хранилище CollegeNLModel.DelStud" />
+          <FunctionImportMapping FunctionImportName="InsFac" FunctionName="Хранилище CollegeNLModel.InsFac" />
+          <FunctionImportMapping FunctionImportName="InsGroup" FunctionName="Хранилище CollegeNLModel.InsGroup" />
+          <FunctionImportMapping FunctionImportName="InsRup" FunctionName="Хранилище CollegeNLModel.InsRup" />
+          <FunctionImportMapping FunctionImportName="InsStud" FunctionName="Хранилище CollegeNLModel.InsStud" />
+          <FunctionImportMapping FunctionImportName="RatingStud" FunctionName="Хранилище CollegeNLModel.RatingStud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CollegeNLModel.RatingStud_Result">
+                <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdFac" FunctionName="Хранилище CollegeNLModel.UpdFac" />
+          <FunctionImportMapping FunctionImportName="UpdGroup" FunctionName="Хранилище CollegeNLModel.UpdGroup" />
+          <FunctionImportMapping FunctionImportName="UpdRup" FunctionName="Хранилище CollegeNLModel.UpdRup" />
+          <FunctionImportMapping FunctionImportName="UpdStud" FunctionName="Хранилище CollegeNLModel.UpdStud" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
