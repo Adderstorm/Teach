@@ -17,7 +17,7 @@ namespace Tours
     
     public partial class CollegeNLEntities : DbContext
     {
-        private static CollegeNLEntities _context;
+        public static CollegeNLEntities _context;
         public CollegeNLEntities()
             : base("name=CollegeNLEntities")
         {
@@ -32,6 +32,7 @@ namespace Tours
             return _context;
         }
 
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

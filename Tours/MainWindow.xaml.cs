@@ -119,12 +119,14 @@ namespace Tours
         {
             if(k % 2 == 0)
             {
+                Other.Content = "Прочее ↓";
                 SecondaryTables.Visibility = Visibility.Hidden;
                 Other.Margin = new Thickness(5, 180, 5, 0);
                 k+= 1;
             }
             else
             {
+                Other.Content = "Скрыть ↑";
                 SecondaryTables.Visibility = Visibility.Visible;
                 Other.Margin = new Thickness(5, 495, 5, 0);
                 k+= 1;

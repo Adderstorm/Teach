@@ -24,28 +24,27 @@ namespace Tours
         {
             InitializeComponent();
 
-            DGFaculty.ItemsSource = CollegeNLEntities.GetContext().Faculty.ToList();
-            DGStudent.ItemsSource = CollegeNLEntities.GetContext().Student.ToList();
-            DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
-            DGCourse.ItemsSource = CollegeNLEntities.GetContext().Course.ToList();
-            DGGroup.ItemsSource = CollegeNLEntities.GetContext().Group.ToList();
-
             switch (choose)
             {
                 case 1:
                     DGStudent1.Visibility = Visibility.Visible;
+                    DGStudent.ItemsSource = CollegeNLEntities.GetContext().Student.ToList();
                     break;
                 case 2:
                     DGGroup1.Visibility= Visibility.Visible;
+                    DGGroup.ItemsSource = CollegeNLEntities.GetContext().Group.ToList();
                     break;
                 case 3:
                     DGFaculty1.Visibility = Visibility.Visible;
+                    DGFaculty.ItemsSource = CollegeNLEntities.GetContext().Faculty.ToList();
                     break;
                 case 4:
                     DGCourse1.Visibility = Visibility.Visible;
+                    DGCourse.ItemsSource = CollegeNLEntities.GetContext().Course.ToList();
                     break;
                 case 5:
                     DGRup1.Visibility = Visibility.Visible;
+                    DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
                     break;
                 case 6:
                     break;
@@ -69,24 +68,39 @@ namespace Tours
                     MessageBox.Show("Кажется произошла непредвиденная ошибка!");
                     break;
             }
-            //DGFaculty.ItemsSource = CollegeNLEntities.GetContext().Faculty.ToList();
-            //DGStudent.ItemsSource = CollegeNLEntities.GetContext().Student.ToList();
-            //DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
-            //DGCourse.ItemsSource = CollegeNLEntities.GetContext().Course.ToList();
-            //DGGroup.ItemsSource = CollegeNLEntities.GetContext().Group.ToList();
         }
 
-        private void SaveBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditGroup_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditStudent_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditRup_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditCourse_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditFaculty_Click(object sender, RoutedEventArgs e)
         {
 
         }

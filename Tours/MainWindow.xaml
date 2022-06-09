@@ -35,7 +35,7 @@
                 <Button Name="ListStudentsGrade" Click="ListStudentsGrade_Click" VerticalAlignment="Top" Margin="5,425,5,0" Content="Оценки студентов"/>
                 <Button Name="StudRating" Click="StudRating_Click" VerticalAlignment="Top" Margin="5,460,5,0" Content="Рейтинг студентов"/>
             </Grid>
-            <Button Name="Other" Click="Other_Click" Margin="5,180,5,0" VerticalAlignment="Top" Content="Прочее ↓"/>
+            <Button Name="Other" Click="Other_Click" Margin="5,180,5,0" VerticalAlignment="Top" Content="Прочее ↓" Background="Beige"/>
         </Grid>
         <Frame Grid.Column="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden" Margin="0,39,0,1" Grid.RowSpan="2"/>
         <Grid Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Margin="502,0,0,0" Width="175">

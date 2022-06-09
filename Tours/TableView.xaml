@@ -18,7 +18,7 @@
                 <ColumnDefinition Width="591*"/>
                 <ColumnDefinition Width="218*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" x:Name="DGGroup" Grid.Column="0">
+            <DataGrid AutoGenerateColumns="False" x:Name="DGGroup" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Группы" Binding="{Binding GroupID}" Width="*"/>
                     <DataGridTextColumn Header="Группа" Binding="{Binding GroupName}" Width="*"/>
@@ -27,7 +27,7 @@
                     <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Ред." Name="BtnEdit" Click="BtnEdit_Click"/>
+                                <Button Content="Ред." Name="BtnEditGroup" Click="BtnEditGroup_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -40,10 +40,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Группа" Foreground="Red" FontSize="20" Grid.Column="1" Margin="0,0,0,601"/>
-            <TextBox x:Name="tbFaculty" Grid.Column="1" Margin="0,114,0,497"/>
-            <Label Content="ID Факультета" Foreground="Red" FontSize="20" Grid.Column="1" Margin="0,74,0,527"/>
-            <TextBox x:Name="tbGroup" Grid.Column="1" Margin="0,42,0,569"/>
         </Grid>
 
         <Grid x:Name="DGStudent1" Visibility="Hidden" Grid.Row="0">
@@ -51,7 +47,7 @@
                 <ColumnDefinition Width="591*"/>
                 <ColumnDefinition Width="218*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" Name="DGStudent" Grid.Column="0">
+            <DataGrid AutoGenerateColumns="False" Name="DGStudent" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Студента" Binding="{Binding StudentID}" Width="*"/>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
@@ -63,7 +59,7 @@
                     <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Ред." Name="BtnEdit" Click="BtnEdit_Click"/>
+                                <Button Content="Ред." Name="BtnEditStudent" Click="BtnEditStudent_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -76,17 +72,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Имя студента" Foreground="Red" FontSize="20" Grid.Column="1" Height="40" Margin="0,1,0,600"/>
-            <TextBox x:Name="tbGroupID" Grid.Column="1" Height="30" Margin="0,111,0,500"/>
-
-            <Label Content="ID Группы" Foreground="Red" FontSize="20" Grid.Column="1" Height="40" Margin="0,71,0,530"/>
-            <TextBox x:Name="tbLastName" Grid.Column="1" Height="30" Margin="0,41,0,570"/>
-            <Label Content="Адрес Email" Foreground="Red" FontSize="20" Grid.Column="1" Height="40" Margin="0,141,0,460"/>
-            <TextBox x:Name="tbPhoneNum" Grid.Column="1" Height="30" Margin="0,251,0,360"/>
-            <Label Content="Номер телефона" Foreground="Red" FontSize="20" Grid.Column="1" Height="40" Margin="0,211,0,390"/>
-            <TextBox x:Name="tbEamil" Grid.Column="1" Height="30" Margin="0,181,0,430"/>
-            <TextBox x:Name="tbBirthday" Grid.Column="1" Height="30" Margin="0,321,0,290"/>
-            <Label Content="День рождения" Foreground="Red" FontSize="20" Grid.Column="1" Height="40" Margin="0,281,0,320"/>
         </Grid>
 
         <Grid x:Name="DGRup1" Visibility="Hidden" Grid.Row="0">
@@ -94,10 +79,10 @@
                 <ColumnDefinition Width="591*"/>
                 <ColumnDefinition Width="218*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" Name="DGRup" Grid.Row="2">
+            <DataGrid AutoGenerateColumns="False" Name="DGRup" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID Дисц." Binding="{Binding RupID}" Width="*"/>
-                    <DataGridTextColumn Header="Название дисц." Binding="{Binding RupName}" Width="*"/>
+                    <DataGridTextColumn Header="ID Дисц." Binding="{Binding RUPID}" Width="*"/>
+                    <DataGridTextColumn Header="Название дисц." Binding="{Binding RUPName}" Width="*"/>
                     <DataGridTextColumn Header="Кол-во часов" Binding="{Binding FacultyHour}" Width="*"/>
                     <DataGridTextColumn Header="Вид аттестации" Binding="{Binding AttestationView}" Width="*"/>
                     <DataGridTextColumn Header="ID Препод." Binding="{Binding TrainerID}" Width="*"/>
@@ -108,7 +93,7 @@
                     <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Ред." Name="BtnEdit" Click="BtnEdit_Click"/>
+                                <Button Content="Ред." Name="BtnEditRup" Click="BtnEditRup_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -121,21 +106,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Название дисциплины" Foreground="Red" FontSize="20" Height="40" Margin="0,0,0,605" Grid.Column="2"/>
-            <TextBox x:Name="tbFacultyHour" Height="30" Margin="0,110,0,505" Grid.Column="2"/>
-
-            <Label Content="Кол-во Часов" Foreground="Red" FontSize="20" Height="40" Margin="0,70,0,535" Grid.Column="2"/>
-            <TextBox x:Name="tbRupName" Height="30" Margin="0,40,0,575" Grid.Column="2"/>
-            <Label Content="Вид Аттестации" Foreground="Red" FontSize="20" Height="40" Margin="0,143,0,462" Grid.Column="2"/>
-            <TextBox x:Name="tbTrainerID" Height="30" Margin="0,252,0,363" Grid.Column="2"/>
-            <Label Content="ID Преподавателя" Foreground="Red" FontSize="20" Height="40" Margin="0,213,0,392" Grid.Column="2"/>
-            <TextBox x:Name="tbAttestationView" Height="30" Margin="0,183,0,432" Grid.Column="2"/>
-            <TextBox x:Name="tbTerm" Height="30" Margin="0,322,0,293" Grid.Column="2"/>
-            <Label Content="Семестр" Foreground="Red" FontSize="20" Height="40" Margin="0,282,0,323" Grid.Column="2"/>
-            <TextBox x:Name="tbFacultyID" Height="30" Margin="0,392,0,223" Grid.Column="2"/>
-            <Label Content="ID Специальности" Foreground="Red" FontSize="20" Height="40" Margin="0,352,0,253" Grid.Column="2"/>
-            <TextBox x:Name="tbCourseID" Margin="0,463,0,152" Height="30" Grid.Column="2"/>
-            <Label Content="ID Дисциплины" Foreground="Red" FontSize="20" Height="40" Margin="0,423,0,182" Grid.Column="2"/>
         </Grid>
 
         <Grid x:Name="DGCourse1" Visibility="Hidden" Grid.Row="0">
@@ -143,14 +113,14 @@
                 <ColumnDefinition Width="591*"/>
                 <ColumnDefinition Width="218*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid AutoGenerateColumns="False" Name="DGCourse" Grid.Column="0">
+            <DataGrid AutoGenerateColumns="False" Name="DGCourse" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Специальности" Binding="{Binding CourseID}" Width="*"/>
                     <DataGridTextColumn Header="Название дисциплины" Binding="{Binding CourseTitle}" Width="*"/>
                     <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Ред." Name="BtnEdit" Click="BtnEdit_Click"/>
+                                <Button Content="Ред." Name="BtnEditCourse" Click="BtnEditCourse_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -163,8 +133,6 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Название дисциплины" Foreground="Red" FontSize="20" Grid.Column="1" Margin="0,0,0,601"/>
-            <TextBox x:Name="tbCourseTitle" Grid.Column="1" Margin="0,45,0,566"/>
         </Grid>
 
         <Grid x:Name="DGFaculty1" Visibility="Hidden" Grid.Row="0">
@@ -172,14 +140,14 @@
                 <ColumnDefinition Width="591*"/>
                 <ColumnDefinition Width="218*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid Name="DGFaculty" Grid.Column="0" AutoGenerateColumns="False">
+            <DataGrid Name="DGFaculty" Grid.ColumnSpan="2" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Специальности" Binding="{Binding FacultyID}" Width="*"/>
                     <DataGridTextColumn Header="Название дисциплины" Binding="{Binding FacultyTitle}" Width="*"/>
                     <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Ред." Name="BtnEdit" Click="BtnEdit_Click"/>
+                                <Button Content="Ред." Name="BtnEditFaculty" Click="BtnEditFaculty_Click"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -192,10 +160,10 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Content="Специальность" Foreground="Red" FontSize="20" Grid.Column="1" Height="40" Margin="0,0,0,601"/>
-            <TextBox x:Name="tbFacultyTitle" Grid.Column="1" Height="30" Margin="0,40,0,571"/>
         </Grid>
 
-        <Button Name="SaveBtn" Content="Сохранить" Grid.Row="1" Click="SaveBtn_Click"/>
+        <Button Name="SaveBtn" Content="Добавить" HorizontalAlignment="Right"  Grid.Row="1" Click="AddBtn_Click" Margin="0,0,50,0"/>
+        
+        
     </Grid>
 </Page>
