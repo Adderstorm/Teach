@@ -26,6 +26,7 @@ namespace Tours
         Course _currentcourse = new Course();
         RUP _currentRUP = new RUP();
         int choosentable = 0;
+        bool IsThisAdd = false;
         public AddEditPage(Student _choosenstud, Group _choosengroup, Faculty _choosenfaculty, Course _choosencourse, RUP _choosenrup, int choose)
         {
             InitializeComponent();
@@ -78,6 +79,7 @@ namespace Tours
                         MessageBox.Show("Кажется произошла непредвиденная ошибка!");
                         break;
                 }
+                IsThisAdd = true;
             }
             switch(choosentable)
             {
@@ -97,9 +99,50 @@ namespace Tours
                     DataContext = _currentRUP;
                     break;
             }
+            if (IsThisAdd == false)
+            {
+                BtnSave.Visibility = Visibility.Visible;
+                BtnAdd.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                BtnAdd.Visibility = Visibility.Visible;
+                BtnSave.Visibility = Visibility.Hidden;
+            }
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            switch (choosentable)
+            {
+                case 1:
+                    CollegeNLEntities.GetContext().UpdRup(tbRupName.Text, Convert.ToInt32(tbFacultyHour.Text), tbAttestationView.Text, Convert.ToInt32(tbRupTrainerID.Text), Convert.ToInt32(tbTerm), Convert.ToInt32(tbRupCourseID), Convert.ToInt32(tbRupFacultyID));
+                    break;
+                case 2:
+                    CollegeNLEntities.GetContext().Group.Add(_currentgroup);
+                    break;
+                case 3:
+                    CollegeNLEntities.GetContext().Faculty.Add(_currentfaculty);
+                    break;
+                case 4:
+                    CollegeNLEntities.GetContext().Course.Add(_currentcourse);
+                    break;
+                case 5:
+                    CollegeNLEntities.GetContext().RUP.Add(_currentRUP);
+                    break;
+            }
+            try
+            {
+                CollegeNLEntities.GetContext().SaveChanges();
+                MessageBox.Show("Изменения сохранены");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             switch (choosentable)
             {
