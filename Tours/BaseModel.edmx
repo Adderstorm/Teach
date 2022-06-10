@@ -302,6 +302,9 @@
         <Function Name="DelStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="StudentId" Type="int" Mode="In" />
         </Function>
+        <Function Name="InsCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseTitle" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="InsFac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FacultyTitle" Type="nvarchar" Mode="In" />
         </Function>
@@ -325,7 +328,12 @@
           <Parameter Name="PhoneNum" Type="nvarchar" Mode="In" />
           <Parameter Name="Birthday" Type="date" Mode="In" />
         </Function>
-        <Function Name="RatingStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="RatingStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CourseTitle" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="UpdFac" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FacultyTitle" Type="nvarchar" Mode="In" />
         </Function>
@@ -770,6 +778,9 @@
           <FunctionImport Name="DelStud">
             <Parameter Name="StudentId" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="InsCourse">
+            <Parameter Name="CourseTitle" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="InsFac">
             <Parameter Name="FacultyTitle" Mode="In" Type="String" />
           </FunctionImport>
@@ -793,7 +804,12 @@
             <Parameter Name="PhoneNum" Mode="In" Type="String" />
             <Parameter Name="Birthday" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="RatingStud" ReturnType="Collection(CollegeNLModel.RatingStud_Result)" />
+          <FunctionImport Name="RatingStud" ReturnType="Collection(CollegeNLModel.RatingStud_Result)">
+            <Parameter Name="CourseID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdCourse">
+            <Parameter Name="CourseTitle" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="UpdFac">
             <Parameter Name="FacultyTitle" Mode="In" Type="String" />
           </FunctionImport>
@@ -819,10 +835,10 @@
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="RatingStud_Result">
+          <Property Type="Int32" Name="StudentId" Nullable="true" />
           <Property Type="Int32" Name="GradeValue" Nullable="true" />
-          <Property Type="Int32" Name="CourseID" Nullable="true" />
-          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="GroupID" Nullable="false" />
+          <Property Type="Int32" Name="CourseID" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -997,6 +1013,7 @@
           <FunctionImportMapping FunctionImportName="DelGroup" FunctionName="Хранилище CollegeNLModel.DelGroup" />
           <FunctionImportMapping FunctionImportName="DelRUP" FunctionName="Хранилище CollegeNLModel.DelRUP" />
           <FunctionImportMapping FunctionImportName="DelStud" FunctionName="Хранилище CollegeNLModel.DelStud" />
+          <FunctionImportMapping FunctionImportName="InsCourse" FunctionName="Хранилище CollegeNLModel.InsCourse" />
           <FunctionImportMapping FunctionImportName="InsFac" FunctionName="Хранилище CollegeNLModel.InsFac" />
           <FunctionImportMapping FunctionImportName="InsGroup" FunctionName="Хранилище CollegeNLModel.InsGroup" />
           <FunctionImportMapping FunctionImportName="InsRup" FunctionName="Хранилище CollegeNLModel.InsRup" />
@@ -1004,13 +1021,14 @@
           <FunctionImportMapping FunctionImportName="RatingStud" FunctionName="Хранилище CollegeNLModel.RatingStud">
             <ResultMapping>
               <ComplexTypeMapping TypeName="CollegeNLModel.RatingStud_Result">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
-                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdCourse" FunctionName="Хранилище CollegeNLModel.UpdCourse" />
           <FunctionImportMapping FunctionImportName="UpdFac" FunctionName="Хранилище CollegeNLModel.UpdFac" />
           <FunctionImportMapping FunctionImportName="UpdGroup" FunctionName="Хранилище CollegeNLModel.UpdGroup" />
           <FunctionImportMapping FunctionImportName="UpdRup" FunctionName="Хранилище CollegeNLModel.UpdRup" />

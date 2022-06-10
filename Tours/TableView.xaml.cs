@@ -20,30 +20,32 @@ namespace Tours
     /// </summary>
     public partial class TableView : Page
     {
+        int choosenTable = 0;
         public TableView(int choose)
         {
             InitializeComponent();
+            choosenTable = choose;
 
             switch (choose)
             {
                 case 1:
-                    DGStudent1.Visibility = Visibility.Visible;
+                    GStudent.Visibility = Visibility.Visible;
                     DGStudent.ItemsSource = CollegeNLEntities.GetContext().Student.ToList();
                     break;
                 case 2:
-                    DGGroup1.Visibility= Visibility.Visible;
+                    GGroup.Visibility= Visibility.Visible;
                     DGGroup.ItemsSource = CollegeNLEntities.GetContext().Group.ToList();
                     break;
                 case 3:
-                    DGFaculty1.Visibility = Visibility.Visible;
+                    GFaculty.Visibility = Visibility.Visible;
                     DGFaculty.ItemsSource = CollegeNLEntities.GetContext().Faculty.ToList();
                     break;
                 case 4:
-                    DGCourse1.Visibility = Visibility.Visible;
+                    GCourse.Visibility = Visibility.Visible;
                     DGCourse.ItemsSource = CollegeNLEntities.GetContext().Course.ToList();
                     break;
                 case 5:
-                    DGRup1.Visibility = Visibility.Visible;
+                    GRup.Visibility = Visibility.Visible;
                     DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
                     break;
                 case 6:
@@ -72,37 +74,65 @@ namespace Tours
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage(null, null, null, null, null, choosenTable));
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
+            var StudentForRemoving = DGStudent.SelectedItems.Cast<Student>().ToList();
+            var GroupForRemoving = DGGroup.SelectedItems.Cast<Group>().ToList();
+            var FacultyForRemoving = DGFaculty.SelectedItems.Cast<Faculty>().ToList();
+            var RUPStudentForRemoving = DGRup.SelectedItems.Cast<RUP>().ToList();
+            var CourseForRemoving = DGCourse.SelectedItems.Cast<Course>().ToList();
+            if(MessageBox.Show($"Вы точно хотите удалить эти элементы?", "Внимание",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    CollegeNLEntities.GetContext().Student.RemoveRange(StudentForRemoving);
+                    CollegeNLEntities.GetContext().Group.RemoveRange(GroupForRemoving);
+                    CollegeNLEntities.GetContext().Faculty.RemoveRange(FacultyForRemoving);
+                    CollegeNLEntities.GetContext().RUP.RemoveRange(RUPStudentForRemoving);
+                    CollegeNLEntities.GetContext().Course.RemoveRange(CourseForRemoving);
+                    CollegeNLEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Данные удалены!");
 
+                    DGStudent.ItemsSource = CollegeNLEntities.GetContext().Student.ToList();
+                    DGGroup.ItemsSource = CollegeNLEntities.GetContext().Group.ToList();
+                    DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
+                    DGFaculty.ItemsSource = CollegeNLEntities.GetContext().Faculty.ToList();
+                    DGCourse.ItemsSource = CollegeNLEntities.GetContext().Course.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
 
         private void BtnEditGroup_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage(null, (sender as Button).DataContext as Group, null, null, null, choosenTable));
         }
 
         private void BtnEditStudent_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Student, null, null, null, null, choosenTable));
         }
 
         private void BtnEditRup_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage(null, null, null, null,(sender as Button).DataContext as RUP, choosenTable));
         }
 
         private void BtnEditCourse_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage(null,null,null,(sender as Button).DataContext as Course,null, choosenTable));
         }
 
         private void BtnEditFaculty_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage(null,null,(sender as Button).DataContext as Faculty,null,null, choosenTable));
         }
     }
 }

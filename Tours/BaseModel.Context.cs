@@ -17,21 +17,17 @@ namespace Tours
     
     public partial class CollegeNLEntities : DbContext
     {
-        public static CollegeNLEntities _context;
+        private static CollegeNLEntities _context;
         public CollegeNLEntities()
             : base("name=CollegeNLEntities")
         {
         }
-
         public static CollegeNLEntities GetContext()
         {
             if(_context == null)
-            {
                 _context = new CollegeNLEntities();
-            }
             return _context;
         }
-
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -98,6 +94,15 @@ namespace Tours
                 new ObjectParameter("StudentId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DelStud", studentIdParameter);
+        }
+    
+        public virtual int InsCourse(string courseTitle)
+        {
+            var courseTitleParameter = courseTitle != null ?
+                new ObjectParameter("CourseTitle", courseTitle) :
+                new ObjectParameter("CourseTitle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsCourse", courseTitleParameter);
         }
     
         public virtual int InsFac(string facultyTitle)
@@ -180,9 +185,22 @@ namespace Tours
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsStud", lastNameParameter, groupIDParameter, emailParameter, phoneNumParameter, birthdayParameter);
         }
     
-        public virtual ObjectResult<RatingStud_Result> RatingStud()
+        public virtual ObjectResult<RatingStud_Result> RatingStud(Nullable<int> courseID)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RatingStud_Result>("RatingStud");
+            var courseIDParameter = courseID.HasValue ?
+                new ObjectParameter("CourseID", courseID) :
+                new ObjectParameter("CourseID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RatingStud_Result>("RatingStud", courseIDParameter);
+        }
+    
+        public virtual int UpdCourse(string courseTitle)
+        {
+            var courseTitleParameter = courseTitle != null ?
+                new ObjectParameter("CourseTitle", courseTitle) :
+                new ObjectParameter("CourseTitle", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdCourse", courseTitleParameter);
         }
     
         public virtual int UpdFac(string facultyTitle)
