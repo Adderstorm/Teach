@@ -13,9 +13,9 @@ namespace Tours
     
     public partial class RatingStud_Result
     {
-        public Nullable<int> StudentId { get; set; }
         public Nullable<int> GradeValue { get; set; }
-        public int GroupID { get; set; }
         public Nullable<int> CourseID { get; set; }
+        public string LastName { get; set; }
+        public int GroupID { get; set; }
     }
 }

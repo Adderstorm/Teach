@@ -17,15 +17,18 @@ namespace Tours
     
     public partial class CollegeNLEntities : DbContext
     {
-        private static CollegeNLEntities _context;
+        public static CollegeNLEntities _context;
         public CollegeNLEntities()
             : base("name=CollegeNLEntities")
         {
         }
+
         public static CollegeNLEntities GetContext()
         {
-            if(_context == null)
+            if (_context == null)
+            {
                 _context = new CollegeNLEntities();
+            }
             return _context;
         }
     
@@ -185,13 +188,9 @@ namespace Tours
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsStud", lastNameParameter, groupIDParameter, emailParameter, phoneNumParameter, birthdayParameter);
         }
     
-        public virtual ObjectResult<RatingStud_Result> RatingStud(Nullable<int> courseID)
+        public virtual ObjectResult<RatingStud_Result> RatingStud()
         {
-            var courseIDParameter = courseID.HasValue ?
-                new ObjectParameter("CourseID", courseID) :
-                new ObjectParameter("CourseID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RatingStud_Result>("RatingStud", courseIDParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RatingStud_Result>("RatingStud");
         }
     
         public virtual int UpdCourse(string courseTitle)

@@ -328,9 +328,7 @@
           <Parameter Name="PhoneNum" Type="nvarchar" Mode="In" />
           <Parameter Name="Birthday" Type="date" Mode="In" />
         </Function>
-        <Function Name="RatingStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="CourseID" Type="int" Mode="In" />
-        </Function>
+        <Function Name="RatingStud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UpdCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CourseTitle" Type="nvarchar" Mode="In" />
         </Function>
@@ -804,9 +802,7 @@
             <Parameter Name="PhoneNum" Mode="In" Type="String" />
             <Parameter Name="Birthday" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="RatingStud" ReturnType="Collection(CollegeNLModel.RatingStud_Result)">
-            <Parameter Name="CourseID" Mode="In" Type="Int32" />
-          </FunctionImport>
+          <FunctionImport Name="RatingStud" ReturnType="Collection(CollegeNLModel.RatingStud_Result)" />
           <FunctionImport Name="UpdCourse">
             <Parameter Name="CourseTitle" Mode="In" Type="String" />
           </FunctionImport>
@@ -835,10 +831,10 @@
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="RatingStud_Result">
-          <Property Type="Int32" Name="StudentId" Nullable="true" />
           <Property Type="Int32" Name="GradeValue" Nullable="true" />
-          <Property Type="Int32" Name="GroupID" Nullable="false" />
           <Property Type="Int32" Name="CourseID" Nullable="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="GroupID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1021,10 +1017,10 @@
           <FunctionImportMapping FunctionImportName="RatingStud" FunctionName="Хранилище CollegeNLModel.RatingStud">
             <ResultMapping>
               <ComplexTypeMapping TypeName="CollegeNLModel.RatingStud_Result">
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="GradeValue" ColumnName="GradeValue" />
-                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

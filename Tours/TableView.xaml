@@ -123,7 +123,7 @@
             <DataGrid Name="DGFaculty"  AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Специальности" Binding="{Binding FacultyID}" Width="*"/>
-                    <DataGridTextColumn Header="Название дисциплины" Binding="{Binding FacultyTitle}" Width="*"/>
+                    <DataGridTextColumn Header="Название дисциплины" Binding="{Binding }" Width="*"/>
                     <DataGridTemplateColumn Width="auto">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -143,7 +143,99 @@
         </Grid>
 
         <Button Name="AddBtn" Content="Добавить" HorizontalAlignment="Right"  Grid.Row="1" Click="AddBtn_Click" Margin="0,0,50,0"/>
+
+        <Grid x:Name="GExpStud" Visibility="Hidden">
+            <DataGrid Name="DGExpStud" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Студента" Binding="{Binding StudentID}" Width="*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="ID Группы" Binding="{Binding GroupID}" Width="*"/>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding DeductionDate}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid x:Name="GAcademicLoad" Visibility="Hidden">
+            <DataGrid Name="DGAcademicLoad" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Дисциплина" Binding="{Binding RUPName}" Width="*"/>
+                    <DataGridTextColumn Header="Кол-во часов" Binding="{Binding FacultyHour}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid x:Name="GAcademicLoadSortTerm" Visibility="Hidden">
+            <DataGrid Name="DGAcademicLoadSortTerm" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Дисциплина" Binding="{Binding RUPName}" Width="*"/>
+                    <DataGridTextColumn Header="Кол-во часов" Binding="{Binding FacultyHour}" Width="*"/>
+                    <DataGridTextColumn Header="Семестр" Binding="{Binding Term}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid x:Name="GFStudent" Visibility="Hidden">
+            <DataGrid Name="DGFStudent" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Преподавателя" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding GradeValue}" Width="*"/>
+                    <DataGridTextColumn Header="Дисциплина" Binding="{Binding GroupName}" Width="*"/>
+                    <DataGridTextColumn Header="Кол-во часов" Binding="{Binding FacultyTitle}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid x:Name="GListStudGrade" Visibility="Hidden">
+            <DataGrid Name="DGListStudGrade" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Преподавателя" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding GradeValue}" Width="*"/>
+                    <DataGridTextColumn Header="Дисциплина" Binding="{Binding GroupName}" Width="*"/>
+                    <DataGridTextColumn Header="Кол-во часов" Binding="{Binding FacultyTitle}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid x:Name="GStudRating" Visibility="Hidden">
+            <DataGrid Name="DGStudRating" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Дисциплины" Binding="{Binding CourseID}" Width="*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Оценка" Binding="{Binding GradeValue}" Width="*"/>
+                    <DataGridTextColumn Header="ID Группы" Binding="{Binding GroupID}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid x:Name="GGroupAvgValue" Visibility="Hidden">
+            <DataGrid Name="DGGroupAvgValue" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Группа" Binding="{Binding GroupName}" Width="*"/>
+                    <DataGridTextColumn Header="Средняя оценка" Binding="{Binding AVGGRADE}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
         
-        
+        <Grid x:Name="GListStudent" Visibility="Hidden">
+            <DataGrid Name="DGListStudent" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Студента" Binding="{Binding StudentID}" Width="*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Группа" Binding="{Binding GroupName}" Width="*"/>
+                    <DataGridTextColumn Header="Специальность" Binding="{Binding FacultyTitle}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid x:Name="GAvgStudentGrade" Visibility="Hidden">
+            <DataGrid Name="DGAvgStudentGrade" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID Студента" Binding="{Binding StudentID}" Width="*"/>
+                    <DataGridTextColumn Header="Средняя оценка" Binding="{Binding AVGStudGrade}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Page>

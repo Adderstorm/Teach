@@ -26,6 +26,9 @@ namespace Tours
             InitializeComponent();
             choosenTable = choose;
 
+            if (choose >= 6)
+                AddBtn.Visibility = Visibility.Hidden;
+
             switch (choose)
             {
                 case 1:
@@ -49,22 +52,40 @@ namespace Tours
                     DGRup.ItemsSource = CollegeNLEntities.GetContext().RUP.ToList();
                     break;
                 case 6:
+                    GExpStud.Visibility = Visibility.Visible;
+                    DGExpStud.ItemsSource = CollegeNLEntities.GetContext().ExpelledStudents.ToList();
                     break;
                 case 7:
+                    GAvgStudentGrade.Visibility = Visibility.Visible;
+                    DGAvgStudentGrade.ItemsSource = CollegeNLEntities.GetContext().AVGStudentGrade.ToList();
                     break;
                 case 8:
+                    GAcademicLoad.Visibility = Visibility.Visible;
+                    DGAcademicLoad.ItemsSource = CollegeNLEntities.GetContext().AcademicLoad.ToList();
                     break;
                 case 9:
+                    GAcademicLoadSortTerm.Visibility = Visibility.Visible;
+                    DGAcademicLoadSortTerm.ItemsSource = CollegeNLEntities.GetContext().AcademicLoad_SortByTerm_.ToList();
                     break;
                 case 10:
+                    GFStudent.Visibility = Visibility.Visible;
+                    DGFStudent.ItemsSource = CollegeNLEntities.GetContext().FStudents.ToList();
                     break;
                 case 11:
+                    GGroupAvgValue.Visibility = Visibility.Visible;
+                    DGGroupAvgValue.ItemsSource = CollegeNLEntities.GetContext().GroupAVGValue.ToList();
                     break;
                 case 12:
+                    GListStudent.Visibility = Visibility.Visible;
+                    DGListStudent.ItemsSource = CollegeNLEntities.GetContext().ListStudents.ToList();
                     break;
                 case 13:
+                    GListStudGrade.Visibility = Visibility.Visible;
+                    DGListStudGrade.ItemsSource = CollegeNLEntities.GetContext().ListStudentsGrade.ToList();
                     break;
                 case 14:
+                    GStudRating.Visibility = Visibility.Visible;
+                    DGStudRating.ItemsSource = CollegeNLEntities.GetContext().StudentRating.ToList();
                     break;
                 default:
                     MessageBox.Show("Кажется произошла непредвиденная ошибка!");
